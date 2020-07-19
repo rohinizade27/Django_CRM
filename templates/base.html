@@ -20,6 +20,11 @@
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
 
+  <!-- Date Time Picker CSS -->
+  <link rel="stylesheet" href="{% static 'date-time-phone-picker/jquery-ui.css' %}">
+  <link rel='stylesheet' href="{% static 'date-time-phone-picker/jquery-ui-timepicker-addon.css' %}" />
+  <!-- Date Time Picker CSS -->
+
 </head>
 
 <body id="page-top">
@@ -126,14 +131,6 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  <script>
-    setTimeout(function(){
-      if ($('#msg').length > 0) {
-        $('#msg').remove();
-      }
-    }, 2000)
-  </script>
-
   <!-- Bootstrap core JavaScript-->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -143,13 +140,43 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+  <script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 2000)
+  </script>
 
-  <!-- Page level plugins -->
-  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+  <!-- Date Time Picker JS -->
+  <script src="{% static 'date-time-phone-picker/jquery-ui.js' %}" ></script>
+  <script src="{% static 'date-time-phone-picker/jquery-ui-timepicker-addon.js' %}"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+  <script>
+    $( function() {
+        // $( "#id_birth_date" ).datetimepicker({ dateFormat: 'yy-mm-dd', maxDate: 0, controlType: 'select'}).attr("autocomplete", "off") ;
+        // $( "#id_birth_date" ).timepicker({ dateFormat: 'yy-mm-dd', maxDate: 0, controlType: 'select'}).attr("autocomplete", "off") ;
+        $( "#id_birth_date" ).datepicker({ dateFormat: 'yy-mm-dd' }).attr("autocomplete", "off") ;
+    });
+
+  </script>
+  <!-- Date Time Picker JS -->
+
+  <!-- Phone Mask JS -->
+  <script src="{% static 'date-time-phone-picker/jquery-input-mask-phone-number.min.js' %}"></script>
+
+  <script>
+    //(xxx) xxx-xxxx format code
+    $('#id_phone_number').usPhoneFormat({
+            format: '(xxx) xxx-xxxx',
+        });
+  </script>
+  <!-- Phone Mask JS -->
+<style>
+   .ui-datepicker{
+         background-color: #dff9e8;
+   }
+</style>
 
 </body>
 
