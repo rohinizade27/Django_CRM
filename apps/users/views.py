@@ -6,7 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from apps.users.models import Profile
-
 from django.contrib import messages
 
 
@@ -42,7 +41,7 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.error(request, 'Your profile is updated successfully!')
+            messages.success(request, 'Your profile is updated successfully!')
             return HttpResponseRedirect(reverse_lazy('profile'))
 
         context = self.get_context_data(

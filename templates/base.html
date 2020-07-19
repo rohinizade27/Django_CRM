@@ -107,6 +107,13 @@
 
       <!-- Main Content -->
       <div id="content">
+        {% if messages %}
+          {% for message in messages %}
+              <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                  {{ message }}
+              </div>
+          {% endfor %}
+        {% endif %}
 
          {% block content %}  {% endblock content %}
 
@@ -119,7 +126,13 @@
   </div>
   <!-- End of Page Wrapper -->
 
-
+  <script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 2000)
+  </script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
