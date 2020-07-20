@@ -14,15 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from apps.users.views import SignUpView,DashboardView, ProfileUpdateView, ProfileView
+from django.urls import path, include
+from apps.users.views import SignUpView, DashboardView, ProfileUpdateView, ProfileView
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', HomeView.as_view(),name='home'),
+    # path('home/', HomeView.as_view(),name='home'),
     path('register/', SignUpView.as_view(),name='register'),
     path('', auth_views.LoginView.as_view(template_name='users/home.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page = 'login'), name='logout'),
@@ -60,6 +60,8 @@ urlpatterns = [
              template_name='users/password-reset/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+
+    path('oauth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:

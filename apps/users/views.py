@@ -10,7 +10,7 @@ from django.contrib import messages
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'base.html'
+    template_name = 'users/dashboard.html'
     login_url = reverse_lazy('login')
 
 
